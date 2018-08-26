@@ -19,20 +19,20 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var pullUpViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pullUpView: UIView!
     
-    var locationManager = CLLocationManager()
+    private(set) var locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
-    let regionRadius: Double = 1000
+    private let regionRadius: Double = 1000
     
-    var screenSize = UIScreen.main.bounds
+    private(set) var screenSize = UIScreen.main.bounds
     
-    var spinner: UIActivityIndicatorView?
-    var progressLbl: UILabel?
+    private(set) var spinner: UIActivityIndicatorView?
+    private(set) var progressLbl: UILabel?
     
-    var flowLayout = UICollectionViewFlowLayout()
-    var collectionView: UICollectionView?
+    private(set) var flowLayout = UICollectionViewFlowLayout()
+    private(set) var collectionView: UICollectionView?
     
-    var imageUrlArray = [String]()
-    var imageArray = [UIImage]()
+    private(set) var imageUrlArray = [String]()
+    private(set) var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
