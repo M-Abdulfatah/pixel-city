@@ -12,11 +12,14 @@ class PopVC: UIViewController, UIGestureRecognizerDelegate {
     
    
     @IBOutlet weak var popImageView: UIImageView!
+
     
-    var passedImage: UIImage!
+    private(set) var passedImage: UIImage!
+    private(set) var imageArray: [UIImage]!
     
-    func initData(forImage image: UIImage) {
+    func initData(forImage image: UIImage, imageArrat imgArrat: [UIImage]) {
         self.passedImage = image
+        self.imageArray = imgArrat
     }
     
     override func viewDidLoad() {

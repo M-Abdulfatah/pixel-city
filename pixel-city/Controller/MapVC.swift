@@ -19,17 +19,19 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var pullUpViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var pullUpView: UIView!
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     private(set) var locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     private let regionRadius: Double = 1000
     
     private(set) var screenSize = UIScreen.main.bounds
     
-    private(set) var spinner: UIActivityIndicatorView?
-    private(set) var progressLbl: UILabel?
+//    private(set) var spinner: UIActivityIndicatorView?
+//    private(set) var progressLbl: UILabel?
     
-    private(set) var flowLayout = UICollectionViewFlowLayout()
-    private(set) var collectionView: UICollectionView?
+//    private(set) var flowLayout = UICollectionViewFlowLayout()
+//    private(set) var collectionView: UICollectionView?
     
     private(set) var imageUrlArray = [String]()
     private(set) var imageArray = [UIImage]()
@@ -41,11 +43,11 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         configureLocationServices()
         addDoubleTap()
         
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
-        collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
+//        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+//        collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: "photoCell")
+//        collectionView?.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
         
         registerForPreviewing(with: self, sourceView: collectionView!)
         
@@ -80,36 +82,36 @@ class MapVC: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func addSpinner() {
-        spinner = UIActivityIndicatorView()
-        spinner?.center = CGPoint(x: (screenSize.width / 2) - ((spinner?.frame.width)! / 2), y: 150)
-        spinner?.activityIndicatorViewStyle = .whiteLarge
-        spinner?.color = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        spinner?.startAnimating()
-        collectionView?.addSubview(spinner!)
-    }
-    
-    func removeSpinner() {
-        if spinner != nil {
-            spinner?.removeFromSuperview()
-        }
-    }
-    
-    func addProgressLbl() {
-        progressLbl = UILabel()
-        progressLbl?.frame = CGRect(x: (screenSize.width / 2) - 120, y: 175, width: 240, height: 40)
-        progressLbl?.font = UIFont(name: "Avenir Next", size: 14)
-        progressLbl?.textColor = #colorLiteral(red: 0.2530381978, green: 0.2701380253, blue: 0.3178575337, alpha: 1)
-        progressLbl?.textAlignment = .center
-        collectionView?.addSubview(progressLbl!)
-    }
-    
-    func removeProgressLbl() {
-        if progressLbl != nil {
-            progressLbl?.removeFromSuperview()
-        }
-    }
-    
+//    func addSpinner() {
+//        spinner = UIActivityIndicatorView()
+//        spinner?.center = CGPoint(x: (screenSize.width / 2) - ((spinner?.frame.width)! / 2), y: 150)
+//        spinner?.activityIndicatorViewStyle = .whiteLarge
+//        spinner?.color = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+//        spinner?.startAnimating()
+//        collectionView?.addSubview(spinner!)
+//    }
+//
+//    func removeSpinner() {
+//        if spinner != nil {
+//            spinner?.removeFromSuperview()
+//        }
+//    }
+//
+//    func addProgressLbl() {
+//        progressLbl = UILabel()
+//        progressLbl?.frame = CGRect(x: (screenSize.width / 2) - 120, y: 175, width: 240, height: 40)
+//        progressLbl?.font = UIFont(name: "Avenir Next", size: 14)
+//        progressLbl?.textColor = #colorLiteral(red: 0.2530381978, green: 0.2701380253, blue: 0.3178575337, alpha: 1)
+//        progressLbl?.textAlignment = .center
+//        collectionView?.addSubview(progressLbl!)
+//    }
+//
+//    func removeProgressLbl() {
+//        if progressLbl != nil {
+//            progressLbl?.removeFromSuperview()
+//        }
+//    }
+
     @IBAction func centerMapBtnWasPressed(_ sender: Any) {
         if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
             centerMapOnUserLocation()
@@ -138,8 +140,8 @@ extension MapVC: MKMapViewDelegate {
     
     @objc func dropPin(sender: UITapGestureRecognizer) {
         removePin()
-        removeSpinner()
-        removeProgressLbl()
+//        removeSpinner()
+//        removeProgressLbl()
         cancelAllSessions()
         
         imageUrlArray = []
@@ -149,8 +151,8 @@ extension MapVC: MKMapViewDelegate {
         
         animateViewUp()
         addSwipe()
-        addSpinner()
-        addProgressLbl()
+//        addSpinner()
+//        addProgressLbl()
         
         let touchPoint = sender.location(in: mapView)
         let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
@@ -165,8 +167,8 @@ extension MapVC: MKMapViewDelegate {
             if finished {
                 self.retrieveImages(handler: { (finished) in
                     if finished {
-                        self.removeSpinner()
-                        self.removeProgressLbl()
+//                        self.removeSpinner()
+//                        self.removeProgressLbl()
                         self.collectionView?.reloadData()
                     }
                 })
@@ -198,8 +200,8 @@ extension MapVC: MKMapViewDelegate {
             Alamofire.request(url).responseImage(completionHandler: { (response) in
                 guard let image = response.result.value else { return }
                 self.imageArray.append(image)
-                self.progressLbl?.text = "\(self.imageArray.count)/40 IMAGES DOWNLOADED"
-                
+//                self.progressLbl?.text = "\(self.imageArray.count)/40 IMAGES DOWNLOADED"
+                self.collectionView.reloadData()
                 if self.imageArray.count == self.imageUrlArray.count {
                     handler(true)
                 }
@@ -241,14 +243,13 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
         let imageFromIndex = imageArray[indexPath.row]
-        let imageView = UIImageView(image: imageFromIndex)
-        cell.addSubview(imageView)
+        cell.configureCell(image: imageFromIndex)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return }
-        popVC.initData(forImage: imageArray[indexPath.row])
+        popVC.initData(forImage: imageArray[indexPath.row], imageArrat: imageArray)
         present(popVC, animated: true, completion: nil)
     }
 }
@@ -260,7 +261,7 @@ extension MapVC: UIViewControllerPreviewingDelegate {
         
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "PopVC") as? PopVC else { return nil }
         
-        popVC.initData(forImage: imageArray[indexPath.row])
+        popVC.initData(forImage: imageArray[indexPath.row], imageArrat: imageArray)
         
         previewingContext.sourceRect = cell.contentView.frame
         return popVC

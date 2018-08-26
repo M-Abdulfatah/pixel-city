@@ -9,11 +9,11 @@
 import UIKit
 
 class PhotoCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    @IBOutlet weak var cellImage: UIImageView!
+    
+    func configureCell(image: UIImage) {
+        cellImage.image = image
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implement")
-    }
 }
