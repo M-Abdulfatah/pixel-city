@@ -5,33 +5,6 @@
 //  Created by Mahmoud Mohammed on 8/26/18.
 //  Copyright © 2018 Mahmoud Mohammed. All rights reserved.
 //
-/*
- // 1
- weak var delegate: PinterestLayoutDelegate!
- 
- // 2
- fileprivate var numberOfColumns = 2
- fileprivate var cellPadding: CGFloat = 6
- 
- // 3
- fileprivate var cache = [UICollectionViewLayoutAttributes]()
- 
- // 4
- fileprivate var contentHeight: CGFloat = 0
- 
- fileprivate var contentWidth: CGFloat {
- guard let collectionView = collectionView else {
- return 0
- }
- let insets = collectionView.contentInset
- return collectionView.bounds.width - (insets.left + insets.right)
- }
- 
- // 5
- override var collectionViewContentSize: CGSize {
- return CGSize(width: contentWidth, height: contentHeight)
- }
- */
 
 import UIKit
 

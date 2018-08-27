@@ -12,6 +12,7 @@
 		1EE3C201211F6EA100E803B4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE3C200211F6EA100E803B4 /* PhotoCell.swift */; };
 		1EE3C203211F7E7100E803B4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE3C202211F7E7100E803B4 /* Constants.swift */; };
 		1EFB54B221330BA300051779 /* WaterFallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB54B121330BA300051779 /* WaterFallLayout.swift */; };
+		1EFB54B421335A3900051779 /* FullImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB54B321335A3800051779 /* FullImageCell.swift */; };
 		1EFC406E2116BE2C0073EDF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC406D2116BE2C0073EDF8 /* AppDelegate.swift */; };
 		1EFC40702116BE2C0073EDF8 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC406F2116BE2C0073EDF8 /* MapVC.swift */; };
 		1EFC40732116BE2C0073EDF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EFC40712116BE2C0073EDF8 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		1EE3C200211F6EA100E803B4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		1EE3C202211F7E7100E803B4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = "pixel-city/View/Constants.swift"; sourceTree = SOURCE_ROOT; };
 		1EFB54B121330BA300051779 /* WaterFallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallLayout.swift; sourceTree = "<group>"; };
+		1EFB54B321335A3800051779 /* FullImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageCell.swift; sourceTree = "<group>"; };
 		1EFC406A2116BE2C0073EDF8 /* pixel-city.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pixel-city.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EFC406D2116BE2C0073EDF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EFC406F2116BE2C0073EDF8 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -81,7 +83,6 @@
 			children = (
 				1EFB54B021330B4600051779 /* Layout */,
 				1EFC40822116C1C20073EDF8 /* Utilities */,
-				1EFC40812116C1B50073EDF8 /* Extension */,
 				1EFC40802116C1A90073EDF8 /* View */,
 				1EFC407F2116C1740073EDF8 /* Controller */,
 				1EFC406D2116BE2C0073EDF8 /* AppDelegate.swift */,
@@ -107,15 +108,9 @@
 			children = (
 				1E0C15322117FC230044B154 /* DroppablePin.swift */,
 				1EE3C200211F6EA100E803B4 /* PhotoCell.swift */,
+				1EFB54B321335A3800051779 /* FullImageCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		1EFC40812116C1B50073EDF8 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		1EFC40822116C1C20073EDF8 /* Utilities */ = {
@@ -261,6 +256,7 @@
 				1E6DDF2B2120981400CAE7C9 /* PopVC.swift in Sources */,
 				1EE3C203211F7E7100E803B4 /* Constants.swift in Sources */,
 				1EE3C201211F6EA100E803B4 /* PhotoCell.swift in Sources */,
+				1EFB54B421335A3900051779 /* FullImageCell.swift in Sources */,
 				1EFC40702116BE2C0073EDF8 /* MapVC.swift in Sources */,
 				1E0C15332117FC230044B154 /* DroppablePin.swift in Sources */,
 				1EFC406E2116BE2C0073EDF8 /* AppDelegate.swift in Sources */,
